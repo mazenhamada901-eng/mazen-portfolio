@@ -271,9 +271,19 @@
   }
 
   /* reveal on scroll */
-  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
-  .reveal.show{opacity:1; transform:translateY(0);}
+  .reveal{
+    opacity:0; transform:translateY(34px) scale(.97);
+    transition:opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal.show{opacity:1; transform:translateY(0) scale(1);}
   .reveal.stagger.show{transition-delay:var(--d,0s);}
+
+  /* ---------- scroll progress bar ---------- */
+  .scroll-progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--red), var(--teal));
+    z-index:100; transition:width .1s linear;
+  }
 
   /* ---------- nav mark ---------- */
   .mark{
@@ -355,6 +365,7 @@
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
 <div class="ruler"><div class="playhead"></div></div>
 
 <header>
@@ -365,10 +376,10 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#work"><span class="tc">00:01</span>WORK</a></li>
-        <li><a href="#toolkit"><span class="tc">00:02</span>TOOLKIT</a></li>
-        <li><a href="#about"><span class="tc">00:03</span>ABOUT</a></li>
-        <li><a href="#contact"><span class="tc">00:04</span>CONTACT</a></li>
+        <li><a href="#work">WORK</a></li>
+        <li><a href="#toolkit">TOOLKIT</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#contact">CONTACT</a></li>
       </ul>
     </nav>
   </div>
@@ -555,6 +566,29 @@
     el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId +
       '?autoplay=1&rel=0" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
   }
+
+  // scroll progress bar
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+  }
+  document.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+
+  // subtle parallax on the rulers as you scroll
+  const rulers = document.querySelectorAll('.ruler');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function updateParallax(){
+    if(reduceMotion) return;
+    const y = window.scrollY;
+    rulers.forEach((r,i)=>{
+      r.style.backgroundPosition = (y * (0.15 + i*0.05)) + 'px 0';
+    });
+  }
+  document.addEventListener('scroll', updateParallax, {passive:true});
+
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
   },{threshold:0.15});
