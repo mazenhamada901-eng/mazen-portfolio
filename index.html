@@ -122,17 +122,36 @@
     display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;
   }
   .btn{
+    position:relative;
     font-family:var(--font-head); font-size:14px; letter-spacing:.5px;
     text-transform:uppercase;
     padding:14px 26px;
     border-radius:2px;
     display:inline-flex; align-items:center; gap:10px;
-    transition:transform .15s, background .2s, color .2s;
+    overflow:hidden;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s, color .2s, border-color .2s;
   }
+  .btn::before{
+    content:'';
+    position:absolute; top:0; left:-120%; width:60%; height:100%;
+    background:linear-gradient(115deg, transparent, rgba(255,255,255,.35), transparent);
+    transform:skewX(-20deg);
+    transition:left .55s ease;
+  }
+  .btn:hover::before{left:140%;}
   .btn-primary{background:var(--red); color:#141112;}
-  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-primary:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 10px 28px -8px rgba(47,111,237,.65);
+  }
+  .btn-primary:active{transform:translateY(-1px) scale(.98);}
   .btn-ghost{border:1px solid var(--line); color:var(--text);}
-  .btn-ghost:hover{border-color:var(--muted); transform:translateY(-2px);}
+  .btn-ghost:hover{
+    border-color:var(--red); color:var(--text);
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 10px 24px -10px rgba(47,111,237,.45);
+  }
+  .btn-ghost:active{transform:translateY(-1px) scale(.98);}
 
   .hero-strip{margin-top:64px;}
   .hero-strip .ruler{margin-bottom:10px;}
@@ -368,7 +387,7 @@
     <div class="ruler"></div>
     <div class="strip-labels">
       <span>00:00:00:00</span>
-      <span>ZAGAZIG, EG — TIMELINE 01</span>
+      <span>GIZA, EG — TIMELINE 01</span>
       <span>00:04:12:00</span>
     </div>
   </div>
@@ -502,10 +521,12 @@
       <p>I'm currently taking on new freelance projects — reach out below if there's a story that needs cutting.</p>
     </div>
     <div class="meta-list reveal">
-      <div class="meta-row"><span>BASED IN</span><span>Zagazig, Sharqia, Egypt</span></div>
+      <div class="meta-row"><span>BASED IN</span><span>Giza, Egypt</span></div>
       <div class="meta-row"><span>ROLE</span><span>Freelance Video Editor</span></div>
       <div class="meta-row"><span>STATUS</span><span>Available for projects</span></div>
       <div class="meta-row"><span>YOUTUBE</span><span>@By_mazen</span></div>
+      <div class="meta-row"><span>EMAIL</span><span>mazenhamada901@gmail.com</span></div>
+      <div class="meta-row"><span>WHATSAPP</span><span>+20 115 001 5735</span></div>
     </div>
   </div>
 </section>
@@ -515,7 +536,8 @@
     <h2>LET'S CUT<br>SOMETHING <span>GREAT.</span></h2>
     <p style="color:var(--muted); font-family:var(--font-body); max-width:480px; margin:0 auto;">Have a project in mind? Send the brief and I'll get back with a timeline and rate.</p>
     <div class="contact-links">
-      <a class="btn btn-primary" href="mailto:youremail@example.com">Email me</a>
+      <a class="btn btn-primary" href="mailto:mazenhamada901@gmail.com">Email me</a>
+      <a class="btn btn-ghost" href="https://wa.me/201150015735" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn btn-ghost" href="https://www.youtube.com/@By_mazen" target="_blank" rel="noopener">YouTube</a>
       <a class="btn btn-ghost" href="https://mazenportfolio.carrd.co" target="_blank" rel="noopener">Old Portfolio</a>
     </div>
