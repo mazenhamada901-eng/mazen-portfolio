@@ -23,7 +23,8 @@
     --font-mono:'JetBrains Mono', monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; scroll-snap-type:y proximity;}
+  section, .hero{scroll-snap-align:start;}
   body{
     background:var(--bg);
     color:var(--text);
@@ -285,6 +286,128 @@
     z-index:100; transition:width .1s linear;
   }
 
+  /* ---------- custom cursor ---------- */
+  @media (hover:hover) and (pointer:fine){
+    body{cursor:none;}
+    a, button, .btn, .clip, .media{cursor:none;}
+  }
+  .cursor-dot, .cursor-ring{
+    position:fixed; top:0; left:0;
+    pointer-events:none; z-index:9999;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+  }
+  .cursor-dot{
+    width:6px; height:6px; background:var(--red);
+  }
+  .cursor-ring{
+    width:34px; height:34px;
+    border:1px solid rgba(47,111,237,.55);
+    transition:width .2s, height .2s, border-color .2s, background .2s;
+  }
+  .cursor-ring.active{
+    width:54px; height:54px;
+    background:rgba(47,111,237,.12);
+    border-color:var(--red);
+  }
+  @media (hover:none), (pointer:coarse){
+    .cursor-dot, .cursor-ring{display:none;}
+  }
+
+  /* ---------- live status widget ---------- */
+  .status-widget{
+    position:fixed; bottom:22px; left:22px; z-index:60;
+    display:flex; align-items:center; gap:10px;
+    background:rgba(23,35,58,.85); backdrop-filter:blur(6px);
+    border:1px solid var(--line); border-radius:30px;
+    padding:9px 16px 9px 12px;
+    font-family:var(--font-mono); font-size:11px; color:var(--muted);
+  }
+  .status-dot{
+    width:8px; height:8px; border-radius:50%; background:#4ADE80;
+    box-shadow:0 0 0 0 rgba(74,222,128,.6);
+    animation:statusPulse 2s infinite;
+  }
+  @keyframes statusPulse{
+    0%{box-shadow:0 0 0 0 rgba(74,222,128,.55);}
+    70%{box-shadow:0 0 0 8px rgba(74,222,128,0);}
+    100%{box-shadow:0 0 0 0 rgba(74,222,128,0);}
+  }
+  .status-widget .status-clock{color:var(--text); border-left:1px solid var(--line); padding-left:10px;}
+  @media (max-width:700px){ .status-widget{left:12px; bottom:12px; font-size:10px;} }
+
+  /* ---------- stat counters ---------- */
+  .stats-row{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:1px; background:var(--line); border:1px solid var(--line); margin-top:40px;
+  }
+  .stat{background:var(--surface); padding:26px 20px; text-align:center;}
+  .stat-num{
+    font-family:var(--font-display); font-size:44px; color:var(--red); line-height:1;
+  }
+  .stat-label{
+    font-family:var(--font-mono); font-size:11px; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.5px; margin-top:8px; display:block;
+  }
+
+  /* ---------- testimonials ---------- */
+  .testi-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2px;
+    background:var(--line);
+  }
+  .testi{background:var(--surface); padding:28px 26px;}
+  .testi-stars{color:var(--red); font-size:14px; letter-spacing:2px; margin-bottom:14px;}
+  .testi-quote{font-size:15px; color:var(--muted); line-height:1.7; font-style:italic;}
+  .testi-name{
+    display:block; margin-top:18px; font-family:var(--font-mono);
+    font-size:12px; color:var(--text);
+  }
+
+  /* ---------- command palette ---------- */
+  .cmdk-hint{
+    position:fixed; bottom:22px; right:22px; z-index:60;
+    display:flex; align-items:center; gap:8px;
+    background:rgba(23,35,58,.85); backdrop-filter:blur(6px);
+    border:1px solid var(--line); border-radius:30px;
+    padding:9px 16px; cursor:pointer;
+    font-family:var(--font-mono); font-size:11px; color:var(--muted);
+    transition:border-color .2s;
+  }
+  .cmdk-hint:hover{border-color:var(--red);}
+  .cmdk-hint kbd{
+    background:var(--surface-2); border:1px solid var(--line); border-radius:4px;
+    padding:1px 6px; color:var(--text); font-family:var(--font-mono);
+  }
+  @media (max-width:700px){ .cmdk-hint{display:none;} }
+  .cmdk-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(5,8,14,.7); backdrop-filter:blur(3px);
+    display:none; align-items:flex-start; justify-content:center;
+    padding-top:14vh;
+  }
+  .cmdk-overlay.open{display:flex;}
+  .cmdk-box{
+    width:min(560px, 90vw); background:var(--surface);
+    border:1px solid var(--line); border-radius:6px;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.6);
+    overflow:hidden;
+  }
+  .cmdk-input{
+    width:100%; background:transparent; border:0; outline:0;
+    border-bottom:1px solid var(--line);
+    padding:18px 20px; color:var(--text);
+    font-family:var(--font-body); font-size:16px;
+  }
+  .cmdk-input::placeholder{color:var(--muted);}
+  .cmdk-results{max-height:320px; overflow-y:auto;}
+  .cmdk-item{
+    padding:13px 20px; display:flex; justify-content:space-between; align-items:center;
+    cursor:pointer; font-size:14px;
+  }
+  .cmdk-item .cmdk-cat{font-family:var(--font-mono); font-size:11px; color:var(--muted);}
+  .cmdk-item.active{background:var(--surface-2);}
+  .cmdk-item.active .cmdk-cat{color:var(--red);}
+
   /* ---------- nav mark ---------- */
   .mark{
     width:34px; height:34px; border-radius:50%;
@@ -365,7 +488,27 @@
 </head>
 <body>
 
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="status-widget">
+  <span class="status-dot"></span>
+  <span>Available for work</span>
+  <span class="status-clock" id="liveClock">--:--</span>
+</div>
+
+<div class="cmdk-hint" id="cmdkHint">
+  <span>Jump to…</span>
+  <kbd id="cmdkKeyLabel">Ctrl K</kbd>
+</div>
+
+<div class="cmdk-overlay" id="cmdkOverlay">
+  <div class="cmdk-box">
+    <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Jump to a section or project…" autocomplete="off">
+    <div class="cmdk-results" id="cmdkResults"></div>
+  </div>
+</div>
 <div class="ruler"><div class="playhead"></div></div>
 
 <header>
@@ -540,6 +683,35 @@
       <div class="meta-row"><span>WHATSAPP</span><span>+20 115 001 5735</span></div>
     </div>
   </div>
+  <div class="stats-row reveal">
+    <div class="stat"><span class="stat-num" data-count="6">0</span><span class="stat-label">Featured Projects</span></div>
+    <div class="stat"><span class="stat-num" data-count="5">0</span><span class="stat-label">Editing Tools</span></div>
+    <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-label">Content Formats</span></div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="section-head">
+    <span class="tc-label">00:04</span>
+    <h2>Client Feedback</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Add a real client quote here — swap this placeholder before you publish."</p>
+      <span class="testi-name">— Client name, Project</span>
+    </div>
+    <div class="testi reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Add a second client quote here — swap this placeholder before you publish."</p>
+      <span class="testi-name">— Client name, Project</span>
+    </div>
+    <div class="testi reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Add a third client quote here — swap this placeholder before you publish."</p>
+      <span class="testi-name">— Client name, Project</span>
+    </div>
+  </div>
 </section>
 
 <section id="contact">
@@ -567,6 +739,31 @@
       '?autoplay=1&rel=0" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
   }
 
+  // custom cursor
+  const cursorDot = document.getElementById('cursorDot');
+  const cursorRing = document.getElementById('cursorRing');
+  const hasFinePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  if(hasFinePointer && cursorDot && cursorRing){
+    let ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', (e)=>{
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursorDot.style.left = mouseX + 'px';
+      cursorDot.style.top = mouseY + 'px';
+    });
+    function animateRing(){
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+    document.querySelectorAll('a, button, .btn, .clip, .media').forEach(el=>{
+      el.addEventListener('mouseenter', ()=>cursorRing.classList.add('active'));
+      el.addEventListener('mouseleave', ()=>cursorRing.classList.remove('active'));
+    });
+  }
+
   // scroll progress bar
   const progressBar = document.getElementById('scrollProgress');
   function updateProgress(){
@@ -590,9 +787,143 @@
   document.addEventListener('scroll', updateParallax, {passive:true});
 
   const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        if(e.target.classList.contains('stats-row')) runCounters();
+      }
+    });
   },{threshold:0.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // stat count-up
+  let countersRan = false;
+  function runCounters(){
+    if(countersRan) return;
+    countersRan = true;
+    document.querySelectorAll('.stat-num').forEach(el=>{
+      const target = parseInt(el.dataset.count, 10);
+      const duration = 900;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = Math.floor(p * target);
+        if(p < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  // live clock (Cairo time)
+  const clockEl = document.getElementById('liveClock');
+  function updateClock(){
+    if(!clockEl) return;
+    const now = new Date();
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone:'Africa/Cairo', hour:'2-digit', minute:'2-digit', hour12:false
+    }).formatToParts(now);
+    const h = parts.find(p=>p.type==='hour').value;
+    const m = parts.find(p=>p.type==='minute').value;
+    clockEl.textContent = h + ':' + m + ' Cairo';
+  }
+  updateClock();
+  setInterval(updateClock, 15000);
+
+  // magnetic buttons
+  if(hasFinePointer){
+    document.querySelectorAll('.btn').forEach(btn=>{
+      btn.addEventListener('mousemove', (e)=>{
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width/2;
+        const y = e.clientY - r.top - r.height/2;
+        btn.style.transform = `translate(${x*0.25}px, ${y*0.35}px) translateY(-3px)`;
+      });
+      btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
+    });
+  }
+
+  // command palette (Ctrl/Cmd + K)
+  const cmdkOverlay = document.getElementById('cmdkOverlay');
+  const cmdkInput = document.getElementById('cmdkInput');
+  const cmdkResults = document.getElementById('cmdkResults');
+  const cmdkHint = document.getElementById('cmdkHint');
+  const cmdkKeyLabel = document.getElementById('cmdkKeyLabel');
+  if(navigator.platform.toUpperCase().indexOf('MAC') >= 0) cmdkKeyLabel.textContent = '⌘ K';
+
+  const cmdkItems = [
+    {label:'Work', cat:'Section', target:'#work'},
+    {label:'Toolkit', cat:'Section', target:'#toolkit'},
+    {label:'About', cat:'Section', target:'#about'},
+    {label:'Client Feedback', cat:'Section', target:'#testimonials'},
+    {label:'Contact', cat:'Section', target:'#contact'},
+  ];
+  document.querySelectorAll('#work h3').forEach(h3=>{
+    cmdkItems.push({label:h3.textContent, cat:'Project', target:'#work'});
+  });
+
+  let activeIndex = 0;
+  function renderResults(query){
+    const q = query.trim().toLowerCase();
+    const filtered = cmdkItems.filter(i=>i.label.toLowerCase().includes(q));
+    cmdkResults.innerHTML = '';
+    filtered.forEach((item,i)=>{
+      const row = document.createElement('div');
+      row.className = 'cmdk-item' + (i===0 ? ' active' : '');
+      row.innerHTML = `<span>${item.label}</span><span class="cmdk-cat">${item.cat}</span>`;
+      row.addEventListener('click', ()=>goTo(item.target));
+      row.addEventListener('mouseenter', ()=>{
+        cmdkResults.querySelectorAll('.cmdk-item').forEach(r=>r.classList.remove('active'));
+        row.classList.add('active');
+        activeIndex = i;
+      });
+      cmdkResults.appendChild(row);
+    });
+    activeIndex = 0;
+  }
+  function goTo(target){
+    closeCmdk();
+    const el = document.querySelector(target);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  function openCmdk(){
+    cmdkOverlay.classList.add('open');
+    cmdkInput.value = '';
+    renderResults('');
+    setTimeout(()=>cmdkInput.focus(), 20);
+  }
+  function closeCmdk(){ cmdkOverlay.classList.remove('open'); }
+
+  cmdkHint.addEventListener('click', openCmdk);
+  cmdkOverlay.addEventListener('click', (e)=>{ if(e.target === cmdkOverlay) closeCmdk(); });
+  cmdkInput.addEventListener('input', ()=>renderResults(cmdkInput.value));
+  document.addEventListener('keydown', (e)=>{
+    if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k'){
+      e.preventDefault();
+      cmdkOverlay.classList.contains('open') ? closeCmdk() : openCmdk();
+    }
+    if(!cmdkOverlay.classList.contains('open')) return;
+    const rows = Array.from(cmdkResults.querySelectorAll('.cmdk-item'));
+    if(e.key === 'Escape') closeCmdk();
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      activeIndex = Math.min(activeIndex+1, rows.length-1);
+      rows.forEach(r=>r.classList.remove('active'));
+      rows[activeIndex] && rows[activeIndex].classList.add('active');
+      rows[activeIndex] && rows[activeIndex].scrollIntoView({block:'nearest'});
+    }
+    if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      activeIndex = Math.max(activeIndex-1, 0);
+      rows.forEach(r=>r.classList.remove('active'));
+      rows[activeIndex] && rows[activeIndex].classList.add('active');
+      rows[activeIndex] && rows[activeIndex].scrollIntoView({block:'nearest'});
+    }
+    if(e.key === 'Enter'){
+      const active = cmdkResults.querySelector('.cmdk-item.active');
+      if(active) active.click();
+    }
+  });
 </script>
 
 </body>
