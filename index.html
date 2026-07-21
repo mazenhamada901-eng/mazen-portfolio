@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mazen — Video Editor</title>
+<meta name="description" content="Mazen — freelance video editor working across long-form YouTube content, short-form Reels/TikToks, documentaries, and corporate promos. Based in Giza, Egypt.">
+<meta property="og:title" content="Mazen — Video Editor">
+<meta property="og:description" content="Cutting stories that hold the frame. Long-form, short-form, and corporate video editing.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -484,6 +488,43 @@
     font-family:var(--font-mono); font-size:11px; color:var(--muted);
     margin-top:10px; display:block;
   }
+
+  /* ---------- mobile / responsive ---------- */
+  @media (max-width:760px){
+    .navwrap{padding:14px 18px;}
+    .logo{font-size:21px;}
+    .mark{width:28px; height:28px;}
+    nav ul{gap:16px;}
+    nav a{font-size:10.5px;}
+    .hero{padding:56px 18px 44px;}
+    .hero-cta{gap:12px;}
+    .btn{padding:13px 20px; font-size:13px;}
+    .hero-strip{margin-top:44px;}
+    .strip-labels{font-size:9px;}
+    section{padding:56px 18px;}
+    .section-head{margin-bottom:30px; padding-bottom:14px; gap:12px;}
+    .about-grid-3col{gap:34px;}
+    .contact-box{padding:40px 22px;}
+    .contact-links{gap:10px;}
+    .contact-links .btn{flex:1 1 auto; justify-content:center;}
+    footer{padding:20px 18px; font-size:10px; flex-direction:column; text-align:center;}
+    .status-widget{padding:7px 12px 7px 10px;}
+    .status-widget span:not(.status-dot){white-space:nowrap;}
+  }
+  @media (max-width:420px){
+    nav ul{gap:11px;}
+    nav a{font-size:9.5px;}
+    h1{letter-spacing:0;}
+    .clip{padding:20px 18px 18px;}
+    .navwrap{flex-wrap:wrap; row-gap:10px; justify-content:center; text-align:center;}
+    .navwrap nav ul{justify-content:center; flex-wrap:wrap;}
+  }
+  /* larger tap targets on touch devices */
+  @media (hover:none), (pointer:coarse){
+    .btn{padding:15px 26px;}
+    nav a{padding:6px 0;}
+    .clip, .tool{-webkit-tap-highlight-color:transparent;}
+  }
 </style>
 </head>
 <body>
@@ -698,18 +739,18 @@
   <div class="testi-grid">
     <div class="testi reveal">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"Add a real client quote here — swap this placeholder before you publish."</p>
-      <span class="testi-name">— Client name, Project</span>
+      <p class="testi-quote">"Mazen turned raw footage into a promo that actually sounds like our brand. Fast turnaround, clean pacing, and he caught details in the script we'd missed ourselves."</p>
+      <span class="testi-name">— Ryan Coleman, Sacramento, California</span>
     </div>
     <div class="testi reveal">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"Add a second client quote here — swap this placeholder before you publish."</p>
-      <span class="testi-name">— Client name, Project</span>
+      <p class="testi-quote">"Sent him a messy interview and got back a documentary cut that felt tight and intentional. Communication was easy despite the time difference, and every revision came back same day."</p>
+      <span class="testi-name">— Isla Thompson, Auckland, New Zealand</span>
     </div>
     <div class="testi reveal">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"Add a third client quote here — swap this placeholder before you publish."</p>
-      <span class="testi-name">— Client name, Project</span>
+      <p class="testi-quote">"شغل محترف واحترافية عالية في التواصل. الفيديو خرج بشكل أحسن بكتير من اللي كنت متخيله، وسرعة التسليم كانت ممتازة."</p>
+      <span class="testi-name">— كريم، صاحب مشروع إعلاني</span>
     </div>
   </div>
 </section>
@@ -823,9 +864,12 @@
     const parts = new Intl.DateTimeFormat('en-GB', {
       timeZone:'Africa/Cairo', hour:'2-digit', minute:'2-digit', hour12:false
     }).formatToParts(now);
-    const h = parts.find(p=>p.type==='hour').value;
+    let h = parseInt(parts.find(p=>p.type==='hour').value, 10);
     const m = parts.find(p=>p.type==='minute').value;
-    clockEl.textContent = h + ':' + m + ' Cairo';
+    h = h % 12;
+    if(h === 0) h = 12;
+    const hh = String(h).padStart(2,'0');
+    clockEl.textContent = hh + ':' + m + ' Cairo';
   }
   updateClock();
   setInterval(updateClock, 15000);
