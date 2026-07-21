@@ -8,6 +8,7 @@
 <meta property="og:title" content="Mazen — Video Editor">
 <meta property="og:description" content="Cutting stories that hold the frame. Long-form, short-form, and corporate video editing.">
 <meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230B1220'/%3E%3Ctext x='50' y='68' font-family='Arial,sans-serif' font-weight='900' font-size='60' fill='%232F6FED' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -83,19 +84,48 @@
   }
   .navwrap{
     max-width:1180px; margin:0 auto;
-    display:flex; align-items:center; justify-content:space-between;
+    display:grid; grid-template-columns:1fr auto 1fr;
+    align-items:center;
     padding:18px 28px;
   }
-  .logo{font-family:var(--font-display); font-size:26px; letter-spacing:1px;}
+  .navwrap::after{content:'';}
+  .logo{
+    font-family:var(--font-display); font-size:34px; letter-spacing:1.5px;
+    position:relative; transition:text-shadow .3s, transform .3s;
+  }
   .logo span{color:var(--red);}
-  nav ul{list-style:none; display:flex; gap:34px;}
+  .logo-wrap{position:relative;}
+  .logo-wrap:hover .logo{
+    text-shadow:0 0 12px rgba(92,147,240,.85), 0 0 30px rgba(47,111,237,.55), 0 0 55px rgba(47,111,237,.3);
+    transform:translateY(-1px);
+  }
+  .logo-wrap:hover .mark{
+    box-shadow:0 0 0 4px rgba(47,111,237,.2), 0 0 22px rgba(92,147,240,.7);
+  }
+  nav ul{
+    list-style:none; display:flex; gap:40px;
+  }
   nav a{
-    font-family:var(--font-mono); font-size:12px; letter-spacing:.5px;
+    font-family:var(--font-mono); font-size:14px; font-weight:600; letter-spacing:1.2px;
     color:var(--muted);
     display:flex; align-items:center; gap:8px;
-    transition:color .2s;
+    position:relative;
+    padding:6px 2px;
+    transition:color .25s, text-shadow .25s;
   }
-  nav a:hover, nav a:focus-visible{color:var(--text);}
+  nav a::after{
+    content:'';
+    position:absolute; left:0; right:0; bottom:0; height:2px;
+    background:var(--teal);
+    transform:scaleX(0); transform-origin:center;
+    transition:transform .3s cubic-bezier(.2,.8,.2,1);
+    box-shadow:0 0 10px rgba(92,147,240,.9);
+  }
+  nav a:hover, nav a:focus-visible{
+    color:var(--text);
+    text-shadow:0 0 8px rgba(92,147,240,.9), 0 0 18px rgba(47,111,237,.55);
+  }
+  nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1);}
   nav a .tc{color:var(--red);}
 
   /* ---------- hero ---------- */
@@ -181,6 +211,24 @@
   }
 
   /* ---------- work grid ---------- */
+  .filter-bar{
+    display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;
+  }
+  .filter-btn{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.5px;
+    color:var(--muted); background:transparent;
+    border:1px solid var(--line); padding:8px 16px; border-radius:2px;
+    cursor:pointer; transition:all .2s;
+  }
+  .filter-btn:hover{color:var(--text); border-color:var(--teal);}
+  .filter-btn.active{color:var(--bg); background:var(--red); border-color:var(--red);}
+  .clip.hidden-item{display:none;}
+  .case-btn{
+    margin-top:16px; background:none; border:none; cursor:pointer;
+    font-family:var(--font-mono); font-size:12px; color:var(--teal);
+    letter-spacing:.3px; padding:0; transition:color .2s, transform .2s;
+  }
+  .case-btn:hover{color:var(--text); transform:translateX(3px);}
   .bin{
     display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:2px; background:var(--line);
@@ -491,11 +539,11 @@
 
   /* ---------- mobile / responsive ---------- */
   @media (max-width:760px){
-    .navwrap{padding:14px 18px;}
-    .logo{font-size:21px;}
+    .navwrap{grid-template-columns:1fr; row-gap:12px; padding:14px 18px; justify-items:center;}
+    .logo{font-size:26px;}
     .mark{width:28px; height:28px;}
-    nav ul{gap:16px;}
-    nav a{font-size:10.5px;}
+    nav ul{gap:20px;}
+    nav a{font-size:12px;}
     .hero{padding:56px 18px 44px;}
     .hero-cta{gap:12px;}
     .btn{padding:13px 20px; font-size:13px;}
@@ -512,12 +560,10 @@
     .status-widget span:not(.status-dot){white-space:nowrap;}
   }
   @media (max-width:420px){
-    nav ul{gap:11px;}
-    nav a{font-size:9.5px;}
+    nav ul{gap:14px; flex-wrap:wrap; justify-content:center;}
+    nav a{font-size:11px;}
     h1{letter-spacing:0;}
     .clip{padding:20px 18px 18px;}
-    .navwrap{flex-wrap:wrap; row-gap:10px; justify-content:center; text-align:center;}
-    .navwrap nav ul{justify-content:center; flex-wrap:wrap;}
   }
   /* larger tap targets on touch devices */
   @media (hover:none), (pointer:coarse){
@@ -525,9 +571,96 @@
     nav a{padding:6px 0;}
     .clip, .tool{-webkit-tap-highlight-color:transparent;}
   }
+  /* ---------- preloader ---------- */
+  .preloader{
+    position:fixed; inset:0; z-index:500;
+    background:var(--bg);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:18px;
+    transition:opacity .5s ease, visibility .5s ease;
+  }
+  .preloader.hide{opacity:0; visibility:hidden; pointer-events:none;}
+  .preloader-mark{
+    font-family:var(--font-display); font-size:40px; letter-spacing:1px; color:var(--text);
+  }
+  .preloader-mark span{color:var(--red);}
+  .preloader-bar{
+    width:220px; height:2px; background:var(--line); position:relative; overflow:hidden;
+  }
+  .preloader-bar::after{
+    content:''; position:absolute; top:0; left:0; height:100%; width:0%;
+    background:linear-gradient(90deg, var(--red), var(--teal));
+    animation:preload 1.3s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes preload{
+    0%{width:0%;} 60%{width:78%;} 100%{width:100%;}
+  }
+  .preloader-label{
+    font-family:var(--font-mono); font-size:11px; color:var(--muted); letter-spacing:1px;
+  }
+
+  /* ---------- scroll to top ---------- */
+  .to-top{
+    position:fixed; bottom:22px; right:22px; z-index:60;
+    width:42px; height:42px; border-radius:50%;
+    background:rgba(23,35,58,.85); backdrop-filter:blur(6px);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    opacity:0; visibility:hidden; transform:translateY(10px);
+    transition:opacity .3s, transform .3s, border-color .2s, visibility .3s;
+  }
+  .to-top.show{opacity:1; visibility:visible; transform:translateY(0);}
+  .to-top:hover{border-color:var(--red); box-shadow:0 0 16px rgba(47,111,237,.4);}
+  .to-top svg{width:16px; height:16px; fill:var(--text);}
+  @media (max-width:700px){ .to-top{bottom:12px; right:12px; width:38px; height:38px;} }
+
+  /* ---------- case study modal ---------- */
+  .case-overlay{
+    position:fixed; inset:0; z-index:200;
+    background:rgba(6,9,16,.82); backdrop-filter:blur(4px);
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+    opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s;
+  }
+  .case-overlay.open{opacity:1; visibility:visible;}
+  .case-box{
+    background:var(--surface); border:1px solid var(--line);
+    max-width:600px; width:100%; max-height:85vh; overflow-y:auto;
+    padding:40px 36px; position:relative;
+    transform:translateY(16px); transition:transform .3s;
+  }
+  .case-overlay.open .case-box{transform:translateY(0);}
+  .case-close{
+    position:absolute; top:16px; right:16px;
+    background:none; border:none; color:var(--muted); font-size:18px; cursor:pointer;
+    transition:color .2s;
+  }
+  .case-close:hover{color:var(--text);}
+  .case-box h3{
+    font-family:var(--font-head); font-weight:500; font-size:24px;
+    margin:10px 0 24px;
+  }
+  .case-block{margin-bottom:20px;}
+  .case-label{
+    font-family:var(--font-mono); font-size:11px; color:var(--red);
+    letter-spacing:.5px; text-transform:uppercase; display:block; margin-bottom:8px;
+  }
+  .case-block p{font-size:14px; color:var(--muted); line-height:1.7;}
 </style>
 </head>
 <body>
+
+<div class="preloader" id="preloader">
+  <div class="preloader-mark">MAZEN<span>.</span></div>
+  <div class="preloader-bar"></div>
+  <span class="preloader-label" id="preloaderLabel">RENDERING…</span>
+</div>
+
+<button class="to-top" id="toTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+</button>
+
 
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -593,9 +726,16 @@
     <span class="tc-label">00:01</span>
     <h2>Selected Work</h2>
   </div>
-  <div class="bin">
+  <div class="filter-bar reveal">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="corporate">Corporate</button>
+    <button class="filter-btn" data-filter="documentary">Documentary</button>
+    <button class="filter-btn" data-filter="short-form">Short-form</button>
+    <button class="filter-btn" data-filter="talking-head">Talking-head</button>
+  </div>
+  <div class="bin" id="workBin">
 
-    <div class="clip reveal stagger" style="--d:0.00s">
+    <div class="clip reveal stagger" data-cat="corporate" style="--d:0.00s">
       <div class="media">
         <div class="placeholder-pattern"></div>
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
@@ -606,7 +746,7 @@
       <div class="clip-bar" style="--fill:55%"></div>
     </div>
 
-    <div class="clip reveal stagger" style="--d:0.08s">
+    <div class="clip reveal stagger" data-cat="documentary" style="--d:0.08s">
       <div class="media" onclick="playYT(this,'DUR3JWNBPJE')">
         <img src="https://img.youtube.com/vi/DUR3JWNBPJE/hqdefault.jpg" alt="Street interviews documentary thumbnail" loading="lazy">
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
@@ -615,9 +755,10 @@
       <h3>Kilmainham Jail — Street Interviews</h3>
       <p>Documentary piece shot in Dublin. Custom location callout graphic overlay, plus aerial and ground footage merged into one continuous narrative in DaVinci Resolve.</p>
       <div class="clip-bar" style="--fill:60%"></div>
+      <button class="case-btn" data-case="kilmainham">View case study →</button>
     </div>
 
-    <div class="clip reveal stagger" style="--d:0.16s">
+    <div class="clip reveal stagger" data-cat="short-form" style="--d:0.16s">
       <div class="media">
         <div class="placeholder-pattern"></div>
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
@@ -628,7 +769,7 @@
       <div class="clip-bar" style="--fill:45%"></div>
     </div>
 
-    <div class="clip reveal stagger" style="--d:0.24s">
+    <div class="clip reveal stagger" data-cat="short-form" style="--d:0.24s">
       <div class="media media-vertical" onclick="playYT(this,'grE6I5ECJW8')">
         <img src="https://img.youtube.com/vi/grE6I5ECJW8/hqdefault.jpg" alt="wisprflow.ai reels ad thumbnail" loading="lazy">
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
@@ -639,7 +780,7 @@
       <div class="clip-bar" style="--fill:50%"></div>
     </div>
 
-    <div class="clip reveal stagger" style="--d:0.32s">
+    <div class="clip reveal stagger" data-cat="short-form" style="--d:0.32s">
       <div class="media media-vertical" onclick="playYT(this,'RWDgjWKT_EM')">
         <img src="https://img.youtube.com/vi/RWDgjWKT_EM/hqdefault.jpg" alt="Curtains before and after ad thumbnail" loading="lazy">
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
@@ -768,12 +909,86 @@
   </div>
 </section>
 
+<div class="case-overlay" id="caseOverlay">
+  <div class="case-box">
+    <button class="case-close" id="caseClose" aria-label="Close">✕</button>
+    <span class="tc-label">CASE STUDY</span>
+    <h3>Kilmainham Jail — Street Interviews</h3>
+    <div class="case-block">
+      <span class="case-label">The Challenge</span>
+      <p>Raw, unscripted street interviews shot on location in Dublin with inconsistent audio levels, shaky handheld footage, and no shot list to follow — needed a coherent narrative built entirely in the edit.</p>
+    </div>
+    <div class="case-block">
+      <span class="case-label">Creative Decisions</span>
+      <p>Restructured the interview order around a stronger emotional arc, added a custom location callout graphic to orient viewers, blended aerial and ground footage into single continuous transitions, and cleaned dialogue levels for consistency throughout.</p>
+    </div>
+    <div class="case-block">
+      <span class="case-label">The Result</span>
+      <p>A short documentary piece that feels intentional rather than assembled — praised by the client for pacing that keeps viewers watching until the final interview.</p>
+    </div>
+  </div>
+</div>
+
 <footer>
   <span>© 2026 MAZEN — VIDEO EDITOR</span>
   <span>REEL LOGGED · TIMECODE 00:04:12:00</span>
 </footer>
 
 <script>
+  // preloader
+  window.addEventListener('load', ()=>{
+    const pre = document.getElementById('preloader');
+    setTimeout(()=>{ if(pre) pre.classList.add('hide'); }, 500);
+  });
+  // safety net in case load event is delayed
+  setTimeout(()=>{
+    const pre = document.getElementById('preloader');
+    if(pre) pre.classList.add('hide');
+  }, 3000);
+
+  // scroll to top button
+  const toTopBtn = document.getElementById('toTop');
+  function updateToTop(){
+    if(!toTopBtn) return;
+    if(window.scrollY > 500) toTopBtn.classList.add('show');
+    else toTopBtn.classList.remove('show');
+  }
+  document.addEventListener('scroll', updateToTop, {passive:true});
+  toTopBtn && toTopBtn.addEventListener('click', ()=>{
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  // work filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const clips = document.querySelectorAll('#workBin .clip');
+  filterBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      filterBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      clips.forEach(clip=>{
+        const show = (f === 'all' || clip.dataset.cat === f);
+        clip.classList.toggle('hidden-item', !show);
+      });
+    });
+  });
+
+  // case study modal
+  const caseOverlay = document.getElementById('caseOverlay');
+  const caseClose = document.getElementById('caseClose');
+  document.querySelectorAll('.case-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(caseOverlay) caseOverlay.classList.add('open');
+    });
+  });
+  caseClose && caseClose.addEventListener('click', ()=>caseOverlay.classList.remove('open'));
+  caseOverlay && caseOverlay.addEventListener('click', (e)=>{
+    if(e.target === caseOverlay) caseOverlay.classList.remove('open');
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && caseOverlay) caseOverlay.classList.remove('open');
+  });
+
   function playYT(el, videoId){
     el.onclick = null;
     el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId +
