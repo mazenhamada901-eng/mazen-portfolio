@@ -4,43 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mazen — Video Editor</title>
-<meta name="description" content="Mazen — freelance video editor working across long-form YouTube content, short-form Reels/TikToks, documentaries, and corporate promos. Based in Giza, Egypt.">
-<meta property="og:title" content="Mazen — Video Editor">
-<meta property="og:description" content="Cutting stories that hold the frame. Long-form, short-form, and corporate video editing.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mazen — Video Editor">
-<meta name="twitter:description" content="Cutting stories that hold the frame. Long-form, short-form, and corporate video editing.">
-<meta name="twitter:image" content="assets/og-image.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230B1220'/%3E%3Ctext x='50' y='68' font-family='Arial,sans-serif' font-weight='900' font-size='60' fill='%232F6FED' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Mazen",
-  "jobTitle": "Freelance Video Editor",
-  "email": "mailto:mazenhamada901@gmail.com",
-  "address": { "@type": "PostalAddress", "addressLocality": "Giza", "addressCountry": "EG" },
-  "knowsAbout": ["Video Editing", "DaVinci Resolve", "Color Grading", "Motion Graphics"],
-  "sameAs": [
-    "https://www.youtube.com/@By_mazen",
-    "https://mazenportfolio.carrd.co"
-  ]
-}
-</script>
-<!--
-  Analytics (optional): uncomment and set your own domain once the site is live
-  to see visitor counts — Plausible is lightweight and doesn't use cookies.
-  Sign up at https://plausible.io, then replace "yourdomain.com" below:
-
-  <script defer data-domain="yourdomain.com" src="https://plausible.io/js/script.js"></script>
--->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0B1220;
@@ -55,7 +21,6 @@
     --font-head:'Oswald', sans-serif;
     --font-body:'Inter', sans-serif;
     --font-mono:'JetBrains Mono', monospace;
-    --font-ar:'Tajawal', sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth; scroll-snap-type:y proximity;}
@@ -68,14 +33,6 @@
     overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none;}
-  .skip-link{
-    position:absolute; top:-100px; left:12px; z-index:300;
-    background:var(--red); color:#141112;
-    font-family:var(--font-mono); font-size:13px; font-weight:600;
-    padding:10px 18px; border-radius:2px;
-    transition:top .2s;
-  }
-  .skip-link:focus{top:12px;}
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
   }
@@ -122,109 +79,20 @@
   }
   .navwrap{
     max-width:1180px; margin:0 auto;
-    display:grid; grid-template-columns:1fr auto 1fr;
-    align-items:center;
+    display:flex; align-items:center; justify-content:space-between;
     padding:18px 28px;
   }
-  .navwrap::after{content:'';}
-  .logo{
-    font-family:var(--font-display); font-size:34px; letter-spacing:1.5px;
-    position:relative; transition:text-shadow .3s, transform .3s;
-  }
+  .logo{font-family:var(--font-display); font-size:26px; letter-spacing:1px;}
   .logo span{color:var(--red);}
-  .logo-wrap{position:relative;}
-  .logo-wrap:hover .logo{
-    text-shadow:0 0 12px rgba(92,147,240,.85), 0 0 30px rgba(47,111,237,.55), 0 0 55px rgba(47,111,237,.3);
-    transform:translateY(-1px);
-  }
-  .logo-wrap:hover .mark{
-    box-shadow:0 0 0 4px rgba(47,111,237,.2), 0 0 22px rgba(92,147,240,.7);
-  }
-  nav ul{
-    list-style:none; display:flex; gap:40px;
-  }
+  nav ul{list-style:none; display:flex; gap:34px;}
   nav a{
-    font-family:var(--font-mono); font-size:14px; font-weight:600; letter-spacing:1.2px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.5px;
     color:var(--muted);
     display:flex; align-items:center; gap:8px;
-    position:relative;
-    padding:6px 2px;
-    transition:color .25s, text-shadow .25s;
+    transition:color .2s;
   }
-  nav a::after{
-    content:'';
-    position:absolute; left:0; right:0; bottom:0; height:2px;
-    background:var(--teal);
-    transform:scaleX(0); transform-origin:center;
-    transition:transform .3s cubic-bezier(.2,.8,.2,1);
-    box-shadow:0 0 10px rgba(92,147,240,.9);
-  }
-  nav a:hover, nav a:focus-visible{
-    color:var(--text);
-    text-shadow:0 0 8px rgba(92,147,240,.9), 0 0 18px rgba(47,111,237,.55);
-  }
-  nav a:hover::after, nav a:focus-visible::after{transform:scaleX(1);}
+  nav a:hover, nav a:focus-visible{color:var(--text);}
   nav a .tc{color:var(--red);}
-
-  /* ---------- language toggle ---------- */
-  .nav-end{display:flex; justify-content:flex-end;}
-  .lang-toggle{
-    display:flex; align-items:center; gap:7px;
-    background:transparent; border:1px solid var(--line); border-radius:30px;
-    padding:8px 14px; cursor:pointer;
-    font-family:var(--font-mono); font-size:12px; font-weight:600; letter-spacing:.5px;
-    color:var(--text);
-    transition:border-color .25s, box-shadow .25s, transform .2s;
-  }
-  .lang-toggle svg{width:15px; height:15px; fill:none; stroke:var(--teal); stroke-width:1.6;}
-  .lang-toggle:hover{
-    border-color:var(--red);
-    box-shadow:0 0 14px rgba(47,111,237,.35);
-    transform:translateY(-2px);
-  }
-  .lang-toggle:active{transform:translateY(0);}
-  @media (max-width:760px){
-    .nav-end{order:3;}
-  }
-
-  /* ---------- Arabic / RTL mode ---------- */
-  body.lang-ar{font-family:var(--font-ar);}
-  body.lang-ar .hero-sub,
-  body.lang-ar .about-grid p,
-  body.lang-ar .clip p,
-  body.lang-ar .tool p,
-  body.lang-ar .testi-quote,
-  body.lang-ar .contact-box > p,
-  body.lang-ar .case-block p{
-    font-family:var(--font-ar);
-  }
-  body.lang-ar h1, body.lang-ar h2, body.lang-ar h3, body.lang-ar h4,
-  body.lang-ar .about-grid strong{
-    font-family:var(--font-ar);
-    letter-spacing:0;
-  }
-  body.lang-ar .about-grid strong{font-weight:700;}
-  html[dir="rtl"] .hero,
-  html[dir="rtl"] .about-grid p,
-  html[dir="rtl"] .clip p,
-  html[dir="rtl"] .tool p,
-  html[dir="rtl"] .testi-quote,
-  html[dir="rtl"] .case-block p,
-  html[dir="rtl"] h1,
-  html[dir="rtl"] .hero-sub,
-  html[dir="rtl"] .section-head h2,
-  html[dir="rtl"] .contact-box h2{
-    text-align:right;
-  }
-  html[dir="rtl"] .about-grid-3col{grid-template-columns:.9fr 1.1fr auto;}
-  html[dir="rtl"] .meta-row span:first-child{color:var(--muted); text-align:left;}
-  html[dir="rtl"] .strip-labels, html[dir="rtl"] .clip-dur,
-  html[dir="rtl"] .status-clock, html[dir="rtl"] .photo-tc,
-  html[dir="rtl"] .preloader-label, html[dir="rtl"] .tc-label{
-    direction:ltr;
-  }
-  html[dir="rtl"] .contact-box{text-align:center;}
-  html[dir="rtl"] .testi-quote{text-align:right;}
 
   /* ---------- hero ---------- */
   .hero{
@@ -309,24 +177,6 @@
   }
 
   /* ---------- work grid ---------- */
-  .filter-bar{
-    display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;
-  }
-  .filter-btn{
-    font-family:var(--font-mono); font-size:12px; letter-spacing:.5px;
-    color:var(--muted); background:transparent;
-    border:1px solid var(--line); padding:8px 16px; border-radius:2px;
-    cursor:pointer; transition:all .2s;
-  }
-  .filter-btn:hover{color:var(--text); border-color:var(--teal);}
-  .filter-btn.active{color:var(--bg); background:var(--red); border-color:var(--red);}
-  .clip.hidden-item{display:none;}
-  .case-btn{
-    margin-top:16px; background:none; border:none; cursor:pointer;
-    font-family:var(--font-mono); font-size:12px; color:var(--teal);
-    letter-spacing:.3px; padding:0; transition:color .2s, transform .2s;
-  }
-  .case-btn:hover{color:var(--text); transform:translateX(3px);}
   .bin{
     display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:2px; background:var(--line);
@@ -380,19 +230,6 @@
   .tool .tc-mini{font-family:var(--font-mono); font-size:11px; color:var(--muted); display:block; margin-bottom:8px;}
   .tool h4{font-family:var(--font-head); font-size:16px; font-weight:500; margin-bottom:8px;}
   .tool p{font-size:13px; color:var(--muted); line-height:1.55;}
-
-  /* ---------- process ---------- */
-  .process-grid{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:1px; background:var(--line); border:1px solid var(--line);
-  }
-  .process-step{background:var(--surface); padding:28px 24px;}
-  .process-num{
-    font-family:var(--font-display); font-size:40px; line-height:1;
-    color:var(--red); opacity:.9; margin-bottom:14px; display:block;
-  }
-  .process-step h4{font-family:var(--font-head); font-weight:500; font-size:16px; margin-bottom:8px;}
-  .process-step p{font-size:13px; color:var(--muted); line-height:1.6;}
 
   /* ---------- about ---------- */
   .about-grid{
@@ -450,15 +287,9 @@
   }
 
   /* ---------- custom cursor ---------- */
-  /* cursor:none only applies once JS confirms the custom cursor is actually running
-     (see .has-custom-cursor toggle in <script>) — otherwise users would lose
-     their pointer entirely if JS fails to load. */
   @media (hover:hover) and (pointer:fine){
-    body.has-custom-cursor,
-    body.has-custom-cursor a, body.has-custom-cursor button,
-    body.has-custom-cursor .btn, body.has-custom-cursor .clip, body.has-custom-cursor .media{
-      cursor:none;
-    }
+    body{cursor:none;}
+    a, button, .btn, .clip, .media{cursor:none;}
   }
   .cursor-dot, .cursor-ring{
     position:fixed; top:0; left:0;
@@ -609,7 +440,6 @@
   }
   .media.media-vertical{aspect-ratio:9/16; max-width:220px; margin-left:auto; margin-right:auto;}
   .media iframe{width:100%; height:100%; border:0; display:block;}
-  .media[role="button"]:focus-visible{outline:2px solid var(--red); outline-offset:2px;}
   .media img, .media video{
     width:100%; height:100%; object-fit:cover; display:block;
     transition:transform .5s cubic-bezier(.2,.8,.2,1);
@@ -654,133 +484,9 @@
     font-family:var(--font-mono); font-size:11px; color:var(--muted);
     margin-top:10px; display:block;
   }
-
-  /* ---------- mobile / responsive ---------- */
-  @media (max-width:760px){
-    .navwrap{grid-template-columns:1fr; row-gap:12px; padding:14px 18px; justify-items:center;}
-    .logo{font-size:26px;}
-    .mark{width:28px; height:28px;}
-    nav ul{gap:20px;}
-    nav a{font-size:12px;}
-    .hero{padding:56px 18px 44px;}
-    .hero-cta{gap:12px;}
-    .btn{padding:13px 20px; font-size:13px;}
-    .hero-strip{margin-top:44px;}
-    .strip-labels{font-size:9px;}
-    section{padding:56px 18px;}
-    .section-head{margin-bottom:30px; padding-bottom:14px; gap:12px;}
-    .about-grid-3col{gap:34px;}
-    .contact-box{padding:40px 22px;}
-    .contact-links{gap:10px;}
-    .contact-links .btn{flex:1 1 auto; justify-content:center;}
-    footer{padding:20px 18px; font-size:10px; flex-direction:column; text-align:center;}
-    .status-widget{padding:7px 12px 7px 10px;}
-    .status-widget span:not(.status-dot){white-space:nowrap;}
-  }
-  @media (max-width:420px){
-    nav ul{gap:14px; flex-wrap:wrap; justify-content:center;}
-    nav a{font-size:11px;}
-    h1{letter-spacing:0;}
-    .clip{padding:20px 18px 18px;}
-  }
-  /* larger tap targets on touch devices */
-  @media (hover:none), (pointer:coarse){
-    .btn{padding:15px 26px;}
-    nav a{padding:6px 0;}
-    .clip, .tool{-webkit-tap-highlight-color:transparent;}
-  }
-  /* ---------- preloader ---------- */
-  .preloader{
-    position:fixed; inset:0; z-index:500;
-    background:var(--bg);
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:18px;
-    transition:opacity .5s ease, visibility .5s ease;
-  }
-  .preloader.hide{opacity:0; visibility:hidden; pointer-events:none;}
-  .preloader-mark{
-    font-family:var(--font-display); font-size:40px; letter-spacing:1px; color:var(--text);
-  }
-  .preloader-mark span{color:var(--red);}
-  .preloader-bar{
-    width:220px; height:2px; background:var(--line); position:relative; overflow:hidden;
-  }
-  .preloader-bar::after{
-    content:''; position:absolute; top:0; left:0; height:100%; width:0%;
-    background:linear-gradient(90deg, var(--red), var(--teal));
-    animation:preload 1.3s cubic-bezier(.2,.8,.2,1) forwards;
-  }
-  @keyframes preload{
-    0%{width:0%;} 60%{width:78%;} 100%{width:100%;}
-  }
-  .preloader-label{
-    font-family:var(--font-mono); font-size:11px; color:var(--muted); letter-spacing:1px;
-  }
-
-  /* ---------- scroll to top ---------- */
-  .to-top{
-    position:fixed; bottom:22px; right:22px; z-index:60;
-    width:42px; height:42px; border-radius:50%;
-    background:rgba(23,35,58,.85); backdrop-filter:blur(6px);
-    border:1px solid var(--line);
-    display:flex; align-items:center; justify-content:center;
-    cursor:pointer;
-    opacity:0; visibility:hidden; transform:translateY(10px);
-    transition:opacity .3s, transform .3s, border-color .2s, visibility .3s;
-  }
-  .to-top.show{opacity:1; visibility:visible; transform:translateY(0);}
-  .to-top:hover{border-color:var(--red); box-shadow:0 0 16px rgba(47,111,237,.4);}
-  .to-top svg{width:16px; height:16px; fill:var(--text);}
-  @media (max-width:700px){ .to-top{bottom:12px; right:12px; width:38px; height:38px;} }
-
-  /* ---------- case study modal ---------- */
-  .case-overlay{
-    position:fixed; inset:0; z-index:200;
-    background:rgba(6,9,16,.82); backdrop-filter:blur(4px);
-    display:flex; align-items:center; justify-content:center;
-    padding:24px;
-    opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s;
-  }
-  .case-overlay.open{opacity:1; visibility:visible;}
-  .case-box{
-    background:var(--surface); border:1px solid var(--line);
-    max-width:600px; width:100%; max-height:85vh; overflow-y:auto;
-    padding:40px 36px; position:relative;
-    transform:translateY(16px); transition:transform .3s;
-  }
-  .case-overlay.open .case-box{transform:translateY(0);}
-  .case-close{
-    position:absolute; top:16px; right:16px;
-    background:none; border:none; color:var(--muted); font-size:18px; cursor:pointer;
-    transition:color .2s;
-  }
-  .case-close:hover{color:var(--text);}
-  .case-box h3{
-    font-family:var(--font-head); font-weight:500; font-size:24px;
-    margin:10px 0 24px;
-  }
-  .case-block{margin-bottom:20px;}
-  .case-label{
-    font-family:var(--font-mono); font-size:11px; color:var(--red);
-    letter-spacing:.5px; text-transform:uppercase; display:block; margin-bottom:8px;
-  }
-  .case-block p{font-size:14px; color:var(--muted); line-height:1.7;}
 </style>
 </head>
 <body>
-
-<a class="skip-link" href="#main-content" data-i18n="a11y.skip">Skip to content</a>
-
-<div class="preloader" id="preloader">
-  <div class="preloader-mark">MAZEN<span>.</span></div>
-  <div class="preloader-bar"></div>
-  <span class="preloader-label" id="preloaderLabel" data-i18n="preloader.label">RENDERING…</span>
-</div>
-
-<button class="to-top" id="toTop" aria-label="Back to top">
-  <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
-</button>
-
 
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
@@ -788,18 +494,18 @@
 
 <div class="status-widget">
   <span class="status-dot"></span>
-  <span data-i18n="status.available">Available for work</span>
+  <span>Available for work</span>
   <span class="status-clock" id="liveClock">--:--</span>
 </div>
 
 <div class="cmdk-hint" id="cmdkHint">
-  <span data-i18n="cmdk.jumpto">Jump to…</span>
+  <span>Jump to…</span>
   <kbd id="cmdkKeyLabel">Ctrl K</kbd>
 </div>
 
 <div class="cmdk-overlay" id="cmdkOverlay">
   <div class="cmdk-box">
-    <input class="cmdk-input" id="cmdkInput" type="text" data-i18n-placeholder="cmdk.placeholder" placeholder="Jump to a section or project…" autocomplete="off">
+    <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Jump to a section or project…" autocomplete="off">
     <div class="cmdk-results" id="cmdkResults"></div>
   </div>
 </div>
@@ -808,41 +514,34 @@
 <header>
   <div class="navwrap">
     <div class="logo-wrap">
-      <img class="mark" src="assets/mazen-mark.svg" alt="Mazen brand mark">
+      <img class="mark" src="assets/mazen-mark.jpg" alt="Mazen brand mark">
       <div class="logo">MAZEN<span>.</span></div>
     </div>
     <nav>
       <ul>
-        <li><a href="#work" data-i18n="nav.work">WORK</a></li>
-        <li><a href="#toolkit" data-i18n="nav.toolkit">TOOLKIT</a></li>
-        <li><a href="#process" data-i18n="nav.process">PROCESS</a></li>
-        <li><a href="#about" data-i18n="nav.about">ABOUT</a></li>
-        <li><a href="#contact" data-i18n="nav.contact">CONTACT</a></li>
+        <li><a href="#work">WORK</a></li>
+        <li><a href="#toolkit">TOOLKIT</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#contact">CONTACT</a></li>
       </ul>
     </nav>
-    <div class="nav-end">
-      <button class="lang-toggle" id="langToggle" aria-label="Switch language / تغيير اللغة">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"/></svg>
-        <span id="langToggleLabel">العربية</span>
-      </button>
-    </div>
   </div>
 </header>
 
-<div class="hero" id="main-content">
-  <span class="eyebrow" data-i18n="hero.eyebrow">FREELANCE VIDEO EDITOR — LONG-FORM &amp; SHORT-FORM</span>
-  <h1 data-i18n-html="hero.title">CUTTING STORIES<br>THAT <span class="accent">HOLD</span> THE FRAME.</h1>
-  <p class="hero-sub" data-i18n="hero.sub">I edit YouTube videos, short-form content, documentaries, and corporate promos — built in DaVinci Resolve, sharpened in Fusion and Color.</p>
+<div class="hero">
+  <span class="eyebrow">FREELANCE VIDEO EDITOR — LONG-FORM &amp; SHORT-FORM</span>
+  <h1>CUTTING STORIES<br>THAT <span class="accent">HOLD</span> THE FRAME.</h1>
+  <p class="hero-sub">I edit YouTube videos, short-form content, documentaries, and corporate promos — built in DaVinci Resolve, sharpened in Fusion and Color.</p>
   <div class="hero-cta">
-    <a class="btn btn-primary" href="#work" data-i18n="hero.cta1">View the work</a>
-    <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta2">Start a project</a>
+    <a class="btn btn-primary" href="#work">View the work</a>
+    <a class="btn btn-ghost" href="#contact">Start a project</a>
   </div>
 
   <div class="hero-strip">
     <div class="ruler"></div>
     <div class="strip-labels">
       <span>00:00:00:00</span>
-      <span data-i18n="hero.strip">GIZA, EG — TIMELINE 01</span>
+      <span>GIZA, EG — TIMELINE 01</span>
       <span>00:04:12:00</span>
     </div>
   </div>
@@ -851,81 +550,73 @@
 <section id="work">
   <div class="section-head">
     <span class="tc-label">00:01</span>
-    <h2 data-i18n="work.heading">Selected Work</h2>
+    <h2>Selected Work</h2>
   </div>
-  <div class="filter-bar reveal">
-    <button class="filter-btn active" data-filter="all" data-i18n="work.filter.all">All</button>
-    <button class="filter-btn" data-filter="corporate" data-i18n="work.filter.corporate">Corporate</button>
-    <button class="filter-btn" data-filter="documentary" data-i18n="work.filter.documentary">Documentary</button>
-    <button class="filter-btn" data-filter="short-form" data-i18n="work.filter.shortform">Short-form</button>
-    <button class="filter-btn" data-filter="talking-head" data-i18n="work.filter.talkinghead">Talking-head</button>
-  </div>
-  <div class="bin" id="workBin">
+  <div class="bin">
 
-    <div class="clip reveal stagger" data-cat="corporate" style="--d:0.00s">
+    <div class="clip reveal stagger" style="--d:0.00s">
       <div class="media">
         <div class="placeholder-pattern"></div>
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
-      <div class="clip-top"><span class="clip-cat" data-i18n="work.clip1.cat">Corporate / Promo</span><span class="clip-dur">MEP · Infra</span></div>
-      <h3 data-i18n="work.clip1.title">MENASCO — Brand Promo</h3>
-      <p data-i18n="work.clip1.desc">Promotional video for a MEP/infrastructure company. Logo processing, AI-generated construction footage prompts, royalty-free sourcing, and competitor ad research folded into the edit.</p>
+      <div class="clip-top"><span class="clip-cat">Corporate / Promo</span><span class="clip-dur">MEP · Infra</span></div>
+      <h3>MENASCO — Brand Promo</h3>
+      <p>Promotional video for a MEP/infrastructure company. Logo processing, AI-generated construction footage prompts, royalty-free sourcing, and competitor ad research folded into the edit.</p>
       <div class="clip-bar" style="--fill:55%"></div>
     </div>
 
-    <div class="clip reveal stagger" data-cat="documentary" style="--d:0.08s">
-      <div class="media" onclick="playYT(this,'DUR3JWNBPJE')" role="button" tabindex="0" aria-label="Play video">
+    <div class="clip reveal stagger" style="--d:0.08s">
+      <div class="media" onclick="playYT(this,'DUR3JWNBPJE')">
         <img src="https://img.youtube.com/vi/DUR3JWNBPJE/hqdefault.jpg" alt="Street interviews documentary thumbnail" loading="lazy">
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
-      <div class="clip-top"><span class="clip-cat" data-i18n="work.clip2.cat">Documentary</span><span class="clip-dur">Dublin, IE</span></div>
-      <h3 data-i18n="work.clip2.title">Kilmainham Jail — Street Interviews</h3>
-      <p data-i18n="work.clip2.desc">Documentary piece shot in Dublin. Custom location callout graphic overlay, plus aerial and ground footage merged into one continuous narrative in DaVinci Resolve.</p>
+      <div class="clip-top"><span class="clip-cat">Documentary</span><span class="clip-dur">Dublin, IE</span></div>
+      <h3>Kilmainham Jail — Street Interviews</h3>
+      <p>Documentary piece shot in Dublin. Custom location callout graphic overlay, plus aerial and ground footage merged into one continuous narrative in DaVinci Resolve.</p>
       <div class="clip-bar" style="--fill:60%"></div>
-      <button class="case-btn" data-case="kilmainham" data-i18n="work.clip2.case">View case study →</button>
     </div>
 
-    <div class="clip reveal stagger" data-cat="short-form" style="--d:0.16s">
+    <div class="clip reveal stagger" style="--d:0.16s">
       <div class="media">
         <div class="placeholder-pattern"></div>
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
-      <div class="clip-top"><span class="clip-cat" data-i18n="work.clip3.cat">Short-form / Viral</span><span class="clip-dur">Clip Cut</span></div>
-      <h3 data-i18n="work.clip3.title">BOXABL — Viral Clip</h3>
-      <p data-i18n="work.clip3.desc">Short-form cut of Elon Musk discussing BOXABL. Hook text, caption styling, and B-roll guidance built for maximum scroll-stopping power.</p>
+      <div class="clip-top"><span class="clip-cat">Short-form / Viral</span><span class="clip-dur">Clip Cut</span></div>
+      <h3>BOXABL — Viral Clip</h3>
+      <p>Short-form cut of Elon Musk discussing BOXABL. Hook text, caption styling, and B-roll guidance built for maximum scroll-stopping power.</p>
       <div class="clip-bar" style="--fill:45%"></div>
     </div>
 
-    <div class="clip reveal stagger" data-cat="short-form" style="--d:0.24s">
-      <div class="media media-vertical" onclick="playYT(this,'grE6I5ECJW8')" role="button" tabindex="0" aria-label="Play video">
+    <div class="clip reveal stagger" style="--d:0.24s">
+      <div class="media media-vertical" onclick="playYT(this,'grE6I5ECJW8')">
         <img src="https://img.youtube.com/vi/grE6I5ECJW8/hqdefault.jpg" alt="wisprflow.ai reels ad thumbnail" loading="lazy">
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
-      <div class="clip-top"><span class="clip-cat" data-i18n="work.clip4.cat">UGC / Ad</span><span class="clip-dur">Reels Ad</span></div>
+      <div class="clip-top"><span class="clip-cat">UGC / Ad</span><span class="clip-dur">Reels Ad</span></div>
       <h3>wisprflow.ai — Reels Ad</h3>
-      <p data-i18n="work.clip4.desc">Vertical reels-style ad for wisprflow.ai: fast cuts, on-screen hooks, and native-feeling pacing built for the Shorts/Reels feed.</p>
+      <p>Vertical reels-style ad for wisprflow.ai: fast cuts, on-screen hooks, and native-feeling pacing built for the Shorts/Reels feed.</p>
       <div class="clip-bar" style="--fill:50%"></div>
     </div>
 
-    <div class="clip reveal stagger" data-cat="short-form" style="--d:0.32s">
-      <div class="media media-vertical" onclick="playYT(this,'RWDgjWKT_EM')" role="button" tabindex="0" aria-label="Play video">
+    <div class="clip reveal stagger" style="--d:0.32s">
+      <div class="media media-vertical" onclick="playYT(this,'RWDgjWKT_EM')">
         <img src="https://img.youtube.com/vi/RWDgjWKT_EM/hqdefault.jpg" alt="Curtains before and after ad thumbnail" loading="lazy">
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
-      <div class="clip-top"><span class="clip-cat" data-i18n="work.clip5.cat">Short-form / Ad</span><span class="clip-dur">Before/After</span></div>
-      <h3 data-i18n="work.clip5.title">Curtains — Before/After Ad</h3>
-      <p data-i18n="work.clip5.desc">Short-form before/after ad for a curtains brand — a clean visual transformation cut for maximum scroll-stopping impact.</p>
+      <div class="clip-top"><span class="clip-cat">Short-form / Ad</span><span class="clip-dur">Before/After</span></div>
+      <h3>Curtains — Before/After Ad</h3>
+      <p>Short-form before/after ad for a curtains brand — a clean visual transformation cut for maximum scroll-stopping impact.</p>
       <div class="clip-bar" style="--fill:40%"></div>
     </div>
 
     <div class="clip reveal stagger" style="--d:0.40s">
-      <div class="media" onclick="playYT(this,'M2AfeSsaAls')" role="button" tabindex="0" aria-label="Play video">
+      <div class="media" onclick="playYT(this,'M2AfeSsaAls')">
         <img src="https://img.youtube.com/vi/M2AfeSsaAls/hqdefault.jpg" alt="Jim Mathers talking-head video thumbnail" loading="lazy">
         <div class="play-btn"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
-      <div class="clip-top"><span class="clip-cat" data-i18n="work.clip6.cat">Talking-head</span><span class="clip-dur">Long-form</span></div>
+      <div class="clip-top"><span class="clip-cat">Talking-head</span><span class="clip-dur">Long-form</span></div>
       <h3>Jim Mathers — Talking-Head</h3>
-      <p data-i18n="work.clip6.desc">Long-form talking-head piece for Jim Mathers' personal-development channel, built around emotional color grading transitions on the Color page.</p>
+      <p>Long-form talking-head piece for Jim Mathers' personal-development channel, built around emotional color grading transitions on the Color page.</p>
       <div class="clip-bar" style="--fill:48%"></div>
     </div>
 
@@ -935,413 +626,124 @@
 <section id="toolkit">
   <div class="section-head">
     <span class="tc-label">00:02</span>
-    <h2 data-i18n="toolkit.heading">Toolkit</h2>
+    <h2>Toolkit</h2>
   </div>
   <div class="toolkit">
     <div class="tool reveal stagger" style="--d:0.00s">
-      <span class="tc-mini" data-i18n="toolkit.t1.tag">PRIMARY NLE</span>
+      <span class="tc-mini">PRIMARY NLE</span>
       <h4>DaVinci Resolve</h4>
-      <p data-i18n="toolkit.t1.desc">Edit, Fusion compositing, and Color pages — the core of every project.</p>
+      <p>Edit, Fusion compositing, and Color pages — the core of every project.</p>
     </div>
     <div class="tool reveal stagger" style="--d:0.06s">
-      <span class="tc-mini" data-i18n="toolkit.t2.tag">COMPOSITING</span>
+      <span class="tc-mini">COMPOSITING</span>
       <h4>Fusion</h4>
-      <p data-i18n="toolkit.t2.desc">Callouts, overlays, and motion graphics built node-by-node.</p>
+      <p>Callouts, overlays, and motion graphics built node-by-node.</p>
     </div>
     <div class="tool reveal stagger" style="--d:0.12s">
-      <span class="tc-mini" data-i18n="toolkit.t3.tag">COLOR</span>
-      <h4 data-i18n="toolkit.t3.title">Color Page</h4>
-      <p data-i18n="toolkit.t3.desc">Mood-driven grading, scene-to-scene continuity, emotional transitions.</p>
+      <span class="tc-mini">COLOR</span>
+      <h4>Color Page</h4>
+      <p>Mood-driven grading, scene-to-scene continuity, emotional transitions.</p>
     </div>
     <div class="tool reveal stagger" style="--d:0.18s">
-      <span class="tc-mini" data-i18n="toolkit.t4.tag">ALSO FLUENT IN</span>
+      <span class="tc-mini">ALSO FLUENT IN</span>
       <h4>Premiere Pro / After Effects</h4>
-      <p data-i18n="toolkit.t4.desc">Full Adobe workflow for client pipelines that need it.</p>
+      <p>Full Adobe workflow for client pipelines that need it.</p>
     </div>
     <div class="tool reveal stagger" style="--d:0.24s">
-      <span class="tc-mini" data-i18n="toolkit.t5.tag">SHORT-FORM</span>
+      <span class="tc-mini">SHORT-FORM</span>
       <h4>CapCut Pro</h4>
-      <p data-i18n="toolkit.t5.desc">Fast turnaround edits for TikTok, Reels, and Shorts.</p>
-    </div>
-  </div>
-</section>
-
-<section id="process">
-  <div class="section-head">
-    <span class="tc-label">00:03</span>
-    <h2 data-i18n="process.heading">How I Work</h2>
-  </div>
-  <div class="process-grid">
-    <div class="process-step reveal stagger" style="--d:0.00s">
-      <span class="process-num">01</span>
-      <h4 data-i18n="process.s1.title">Brief &amp; footage</h4>
-      <p data-i18n="process.s1.desc">You send the brief, raw footage, and any brand assets — I ask what's missing before touching a single clip.</p>
-    </div>
-    <div class="process-step reveal stagger" style="--d:0.06s">
-      <span class="process-num">02</span>
-      <h4 data-i18n="process.s2.title">Assembly cut</h4>
-      <p data-i18n="process.s2.desc">Story structure and pacing come first — a rough cut in DaVinci Resolve so the shape is right before polish.</p>
-    </div>
-    <div class="process-step reveal stagger" style="--d:0.12s">
-      <span class="process-num">03</span>
-      <h4 data-i18n="process.s3.title">Refine &amp; color</h4>
-      <p data-i18n="process.s3.desc">Motion graphics, sound design, and a mood-driven color grade on the Color page bring it to final quality.</p>
-    </div>
-    <div class="process-step reveal stagger" style="--d:0.18s">
-      <span class="process-num">04</span>
-      <h4 data-i18n="process.s4.title">Delivery</h4>
-      <p data-i18n="process.s4.desc">Export in whatever format you need, one round of revisions included, then final delivery.</p>
+      <p>Fast turnaround edits for TikTok, Reels, and Shorts.</p>
     </div>
   </div>
 </section>
 
 <section id="about">
   <div class="section-head">
-    <span class="tc-label">00:04</span>
-    <h2 data-i18n="about.heading">About</h2>
+    <span class="tc-label">00:03</span>
+    <h2>About</h2>
   </div>
   <div class="about-grid about-grid-3col">
     <div class="reveal">
       <div class="photo-frame">
-        <img src="assets/mazen-headshot.svg" alt="Mazen — video editor (placeholder, replace with a real photo)">
+        <img src="assets/mazen-headshot.png" alt="Mazen — video editor">
       </div>
       <span class="photo-tc">FRAME 00:00:01:12</span>
     </div>
     <div class="reveal">
-      <p data-i18n-html="about.p1"><strong>I'm Mazen</strong> — a freelance video editor working across long-form YouTube content, short-form Reels and TikToks, documentaries, and corporate promos.</p>
-      <p data-i18n="about.p2">Alongside client work, I'm a first-year university student, which keeps every edit efficient: no wasted passes, tight turnarounds, and a workflow built around DaVinci Resolve from cut to color.</p>
-      <p data-i18n="about.p3">I'm currently taking on new freelance projects — reach out below if there's a story that needs cutting.</p>
+      <p><strong>I'm Mazen</strong> — a freelance video editor working across long-form YouTube content, short-form Reels and TikToks, documentaries, and corporate promos.</p>
+      <p>Alongside client work, I'm a first-year university student, which keeps every edit efficient: no wasted passes, tight turnarounds, and a workflow built around DaVinci Resolve from cut to color.</p>
+      <p>I'm currently taking on new freelance projects — reach out below if there's a story that needs cutting.</p>
     </div>
     <div class="meta-list reveal">
-      <div class="meta-row"><span data-i18n="about.meta.based">BASED IN</span><span data-i18n="about.meta.based.val">Giza, Egypt</span></div>
-      <div class="meta-row"><span data-i18n="about.meta.role">ROLE</span><span data-i18n="about.meta.role.val">Freelance Video Editor</span></div>
-      <div class="meta-row"><span data-i18n="about.meta.status">STATUS</span><span data-i18n="about.meta.status.val">Available for projects</span></div>
-      <div class="meta-row"><span data-i18n="about.meta.youtube">YOUTUBE</span><span>@By_mazen</span></div>
-      <div class="meta-row"><span data-i18n="about.meta.email">EMAIL</span><span>mazenhamada901@gmail.com</span></div>
-      <div class="meta-row"><span data-i18n="about.meta.whatsapp">WHATSAPP</span><span>+20 115 001 5735</span></div>
+      <div class="meta-row"><span>BASED IN</span><span>Giza, Egypt</span></div>
+      <div class="meta-row"><span>ROLE</span><span>Freelance Video Editor</span></div>
+      <div class="meta-row"><span>STATUS</span><span>Available for projects</span></div>
+      <div class="meta-row"><span>YOUTUBE</span><span>@By_mazen</span></div>
+      <div class="meta-row"><span>EMAIL</span><span>mazenhamada901@gmail.com</span></div>
+      <div class="meta-row"><span>WHATSAPP</span><span>+20 115 001 5735</span></div>
     </div>
   </div>
   <div class="stats-row reveal">
-    <div class="stat"><span class="stat-num" data-count="6">0</span><span class="stat-label" data-i18n="about.stat1">Featured Projects</span></div>
-    <div class="stat"><span class="stat-num" data-count="5">0</span><span class="stat-label" data-i18n="about.stat2">Editing Tools</span></div>
-    <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-label" data-i18n="about.stat3">Content Formats</span></div>
+    <div class="stat"><span class="stat-num" data-count="6">0</span><span class="stat-label">Featured Projects</span></div>
+    <div class="stat"><span class="stat-num" data-count="5">0</span><span class="stat-label">Editing Tools</span></div>
+    <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-label">Content Formats</span></div>
   </div>
 </section>
 
 <section id="testimonials">
   <div class="section-head">
-    <span class="tc-label">00:05</span>
-    <h2 data-i18n="testi.heading">Client Feedback</h2>
+    <span class="tc-label">00:04</span>
+    <h2>Client Feedback</h2>
   </div>
   <div class="testi-grid">
     <div class="testi reveal">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote" data-i18n="testi.t1.quote">"Mazen turned raw footage into a promo that actually sounds like our brand. Fast turnaround, clean pacing, and he caught details in the script we'd missed ourselves."</p>
-      <span class="testi-name">— Ryan Coleman, Sacramento, California</span>
+      <p class="testi-quote">"Add a real client quote here — swap this placeholder before you publish."</p>
+      <span class="testi-name">— Client name, Project</span>
     </div>
     <div class="testi reveal">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote" data-i18n="testi.t2.quote">"Sent him a messy interview and got back a documentary cut that felt tight and intentional. Communication was easy despite the time difference, and every revision came back same day."</p>
-      <span class="testi-name">— Isla Thompson, Auckland, New Zealand</span>
+      <p class="testi-quote">"Add a second client quote here — swap this placeholder before you publish."</p>
+      <span class="testi-name">— Client name, Project</span>
     </div>
     <div class="testi reveal">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote" data-i18n="testi.t3.quote">"شغل محترف واحترافية عالية في التواصل. الفيديو خرج بشكل أحسن بكتير من اللي كنت متخيله، وسرعة التسليم كانت ممتازة."</p>
-      <span class="testi-name" data-i18n="testi.t3.name">— كريم، صاحب مشروع إعلاني</span>
+      <p class="testi-quote">"Add a third client quote here — swap this placeholder before you publish."</p>
+      <span class="testi-name">— Client name, Project</span>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="contact-box reveal">
-    <h2 data-i18n-html="contact.heading">LET'S CUT<br>SOMETHING <span>GREAT.</span></h2>
-    <p data-i18n="contact.sub" style="color:var(--muted); font-family:var(--font-body); max-width:480px; margin:0 auto;">Have a project in mind? Send the brief and I'll get back with a timeline and rate.</p>
+    <h2>LET'S CUT<br>SOMETHING <span>GREAT.</span></h2>
+    <p style="color:var(--muted); font-family:var(--font-body); max-width:480px; margin:0 auto;">Have a project in mind? Send the brief and I'll get back with a timeline and rate.</p>
     <div class="contact-links">
-      <a class="btn btn-primary" href="mailto:mazenhamada901@gmail.com" data-i18n="contact.email">Email me</a>
+      <a class="btn btn-primary" href="mailto:mazenhamada901@gmail.com">Email me</a>
       <a class="btn btn-ghost" href="https://wa.me/201150015735" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn btn-ghost" href="https://www.youtube.com/@By_mazen" target="_blank" rel="noopener">YouTube</a>
-      <a class="btn btn-ghost" href="https://mazenportfolio.carrd.co" target="_blank" rel="noopener" data-i18n="contact.oldportfolio">Old Portfolio</a>
+      <a class="btn btn-ghost" href="https://mazenportfolio.carrd.co" target="_blank" rel="noopener">Old Portfolio</a>
     </div>
   </div>
 </section>
 
-<div class="case-overlay" id="caseOverlay">
-  <div class="case-box">
-    <button class="case-close" id="caseClose" aria-label="Close">✕</button>
-    <span class="tc-label" data-i18n="case.tag">CASE STUDY</span>
-    <h3 data-i18n="work.clip2.title">Kilmainham Jail — Street Interviews</h3>
-    <div class="case-block">
-      <span class="case-label" data-i18n="case.challenge.label">The Challenge</span>
-      <p data-i18n="case.challenge.desc">Raw, unscripted street interviews shot on location in Dublin with inconsistent audio levels, shaky handheld footage, and no shot list to follow — needed a coherent narrative built entirely in the edit.</p>
-    </div>
-    <div class="case-block">
-      <span class="case-label" data-i18n="case.decisions.label">Creative Decisions</span>
-      <p data-i18n="case.decisions.desc">Restructured the interview order around a stronger emotional arc, added a custom location callout graphic to orient viewers, blended aerial and ground footage into single continuous transitions, and cleaned dialogue levels for consistency throughout.</p>
-    </div>
-    <div class="case-block">
-      <span class="case-label" data-i18n="case.result.label">The Result</span>
-      <p data-i18n="case.result.desc">A short documentary piece that feels intentional rather than assembled — praised by the client for pacing that keeps viewers watching until the final interview.</p>
-    </div>
-  </div>
-</div>
-
 <footer>
-  <span data-i18n="footer.copy">© 2026 MAZEN — VIDEO EDITOR</span>
-  <span data-i18n="footer.tag">REEL LOGGED · TIMECODE 00:04:12:00</span>
+  <span>© 2026 MAZEN — VIDEO EDITOR</span>
+  <span>REEL LOGGED · TIMECODE 00:04:12:00</span>
 </footer>
 
 <script>
-  // ---------- i18n (EN / AR) ----------
-  const i18n = { current: 'en', dict: { en: {}, ar: {} } };
-
-  i18n.dict.en = {
-    'a11y.skip':'Skip to content',
-    'nav.work':'WORK', 'nav.toolkit':'TOOLKIT', 'nav.process':'PROCESS', 'nav.about':'ABOUT', 'nav.contact':'CONTACT',
-    'hero.eyebrow':'FREELANCE VIDEO EDITOR — LONG-FORM & SHORT-FORM',
-    'hero.title':'CUTTING STORIES<br>THAT <span class="accent">HOLD</span> THE FRAME.',
-    'hero.sub':'I edit YouTube videos, short-form content, documentaries, and corporate promos — built in DaVinci Resolve, sharpened in Fusion and Color.',
-    'hero.cta1':'View the work', 'hero.cta2':'Start a project',
-    'hero.strip':'GIZA, EG — TIMELINE 01',
-    'work.heading':'Selected Work',
-    'work.filter.all':'All', 'work.filter.corporate':'Corporate', 'work.filter.documentary':'Documentary',
-    'work.filter.shortform':'Short-form', 'work.filter.talkinghead':'Talking-head',
-    'work.clip1.cat':'Corporate / Promo', 'work.clip1.title':'MENASCO — Brand Promo',
-    'work.clip1.desc':'Promotional video for a MEP/infrastructure company. Logo processing, AI-generated construction footage prompts, royalty-free sourcing, and competitor ad research folded into the edit.',
-    'work.clip2.cat':'Documentary', 'work.clip2.title':'Kilmainham Jail — Street Interviews',
-    'work.clip2.desc':'Documentary piece shot in Dublin. Custom location callout graphic overlay, plus aerial and ground footage merged into one continuous narrative in DaVinci Resolve.',
-    'work.clip2.case':'View case study →',
-    'work.clip3.cat':'Short-form / Viral', 'work.clip3.title':'BOXABL — Viral Clip',
-    'work.clip3.desc':"Short-form cut of Elon Musk discussing BOXABL. Hook text, caption styling, and B-roll guidance built for maximum scroll-stopping power.",
-    'work.clip4.cat':'UGC / Ad',
-    'work.clip4.desc':'Vertical reels-style ad for wisprflow.ai: fast cuts, on-screen hooks, and native-feeling pacing built for the Shorts/Reels feed.',
-    'work.clip5.cat':'Short-form / Ad', 'work.clip5.title':'Curtains — Before/After Ad',
-    'work.clip5.desc':'Short-form before/after ad for a curtains brand — a clean visual transformation cut for maximum scroll-stopping impact.',
-    'work.clip6.cat':'Talking-head',
-    'work.clip6.desc':"Long-form talking-head piece for Jim Mathers' personal-development channel, built around emotional color grading transitions on the Color page.",
-    'toolkit.heading':'Toolkit',
-    'toolkit.t1.tag':'PRIMARY NLE', 'toolkit.t1.desc':'Edit, Fusion compositing, and Color pages — the core of every project.',
-    'toolkit.t2.tag':'COMPOSITING', 'toolkit.t2.desc':'Callouts, overlays, and motion graphics built node-by-node.',
-    'toolkit.t3.tag':'COLOR', 'toolkit.t3.title':'Color Page', 'toolkit.t3.desc':'Mood-driven grading, scene-to-scene continuity, emotional transitions.',
-    'toolkit.t4.tag':'ALSO FLUENT IN', 'toolkit.t4.desc':'Full Adobe workflow for client pipelines that need it.',
-    'toolkit.t5.tag':'SHORT-FORM', 'toolkit.t5.desc':'Fast turnaround edits for TikTok, Reels, and Shorts.',
-    'process.heading':'How I Work',
-    'process.s1.title':'Brief & footage',
-    'process.s1.desc':"You send the brief, raw footage, and any brand assets — I ask what's missing before touching a single clip.",
-    'process.s2.title':'Assembly cut',
-    'process.s2.desc':'Story structure and pacing come first — a rough cut in DaVinci Resolve so the shape is right before polish.',
-    'process.s3.title':'Refine & color',
-    'process.s3.desc':'Motion graphics, sound design, and a mood-driven color grade on the Color page bring it to final quality.',
-    'process.s4.title':'Delivery',
-    'process.s4.desc':'Export in whatever format you need, one round of revisions included, then final delivery.',
-    'about.heading':'About',
-    'about.p1':"<strong>I'm Mazen</strong> — a freelance video editor working across long-form YouTube content, short-form Reels and TikToks, documentaries, and corporate promos.",
-    'about.p2':"Alongside client work, I'm a first-year university student, which keeps every edit efficient: no wasted passes, tight turnarounds, and a workflow built around DaVinci Resolve from cut to color.",
-    'about.p3':"I'm currently taking on new freelance projects — reach out below if there's a story that needs cutting.",
-    'about.meta.based':'BASED IN', 'about.meta.based.val':'Giza, Egypt',
-    'about.meta.role':'ROLE', 'about.meta.role.val':'Freelance Video Editor',
-    'about.meta.status':'STATUS', 'about.meta.status.val':'Available for projects',
-    'about.meta.youtube':'YOUTUBE', 'about.meta.email':'EMAIL', 'about.meta.whatsapp':'WHATSAPP',
-    'about.stat1':'Featured Projects', 'about.stat2':'Editing Tools', 'about.stat3':'Content Formats',
-    'testi.heading':'Client Feedback',
-    'testi.t1.quote':'"Mazen turned raw footage into a promo that actually sounds like our brand. Fast turnaround, clean pacing, and he caught details in the script we\'d missed ourselves."',
-    'testi.t2.quote':'"Sent him a messy interview and got back a documentary cut that felt tight and intentional. Communication was easy despite the time difference, and every revision came back same day."',
-    'testi.t3.quote':'"Professional work and highly professional communication. The video turned out much better than I imagined, and the delivery speed was excellent."',
-    'testi.t3.name':'— Karim, Ad Campaign Owner',
-    'contact.heading':'LET\'S CUT<br>SOMETHING <span>GREAT.</span>',
-    'contact.sub':"Have a project in mind? Send the brief and I'll get back with a timeline and rate.",
-    'contact.email':'Email me', 'contact.oldportfolio':'Old Portfolio',
-    'case.tag':'CASE STUDY',
-    'case.challenge.label':'The Challenge',
-    'case.challenge.desc':'Raw, unscripted street interviews shot on location in Dublin with inconsistent audio levels, shaky handheld footage, and no shot list to follow — needed a coherent narrative built entirely in the edit.',
-    'case.decisions.label':'Creative Decisions',
-    'case.decisions.desc':'Restructured the interview order around a stronger emotional arc, added a custom location callout graphic to orient viewers, blended aerial and ground footage into single continuous transitions, and cleaned dialogue levels for consistency throughout.',
-    'case.result.label':'The Result',
-    'case.result.desc':'A short documentary piece that feels intentional rather than assembled — praised by the client for pacing that keeps viewers watching until the final interview.',
-    'footer.copy':'© 2026 MAZEN — VIDEO EDITOR', 'footer.tag':'REEL LOGGED · TIMECODE 00:04:12:00',
-    'status.available':'Available for work',
-    'cmdk.jumpto':'Jump to…', 'cmdk.placeholder':'Jump to a section or project…',
-    'cmdk.cat.section':'Section', 'cmdk.cat.project':'Project',
-    'preloader.label':'RENDERING…'
-  };
-
-  i18n.dict.ar = {
-    'a11y.skip':'انتقل إلى المحتوى',
-    'nav.work':'الأعمال', 'nav.toolkit':'الأدوات', 'nav.process':'خطوات العمل', 'nav.about':'نبذة', 'nav.contact':'تواصل',
-    'hero.eyebrow':'مونتير فيديو فريلانس — محتوى طويل وقصير',
-    'hero.title':'قصص نحررها<br>لتفضل <span class="accent">عالقة</span> في الذهن.',
-    'hero.sub':'بحرر فيديوهات يوتيوب، محتوى قصير، أفلام وثائقية، وإعلانات شركات — كل مونتاج بابنيه على DaVinci Resolve، وبصقل تفاصيله بـ Fusion والـ Color.',
-    'hero.cta1':'شاهد الأعمال', 'hero.cta2':'ابدأ مشروع',
-    'hero.strip':'الجيزة، مصر — تايملاين 01',
-    'work.heading':'أعمال مختارة',
-    'work.filter.all':'الكل', 'work.filter.corporate':'شركات', 'work.filter.documentary':'وثائقي',
-    'work.filter.shortform':'فيديو قصير', 'work.filter.talkinghead':'توك هيد',
-    'work.clip1.cat':'شركات / برومو', 'work.clip1.title':'MENASCO — فيديو تعريفي بالعلامة',
-    'work.clip1.desc':'فيديو ترويجي لشركة متخصصة في البنية التحتية والأنظمة الميكانيكية. تضمّن المونتاج معالجة اللوجو، توليد لقطات إنشائية بالذكاء الاصطناعي، اختيار مصادر بصرية خالية من حقوق الملكية، وبحث في إعلانات المنافسين.',
-    'work.clip2.cat':'وثائقي', 'work.clip2.title':'سجن كيلماينهام — مقابلات في الشارع',
-    'work.clip2.desc':'عمل وثائقي مصوّر في دبلن. جرافيك مخصص لإظهار الموقع، مع دمج لقطات جوية وأرضية في سرد واحد متصل داخل DaVinci Resolve.',
-    'work.clip2.case':'شاهد دراسة الحالة ←',
-    'work.clip3.cat':'فيديو قصير / فيرال', 'work.clip3.title':'BOXABL — كليب فيرال',
-    'work.clip3.desc':'مقطع قصير لإيلون ماسك وهو بيتكلم عن BOXABL. نص جذب على الشاشة، تنسيق كابشن، وتوجيه للقطات B-roll بهدف واحد: وقف المتابع عن السكرول.',
-    'work.clip4.cat':'محتوى مستخدمين / إعلان',
-    'work.clip4.desc':'إعلان بأسلوب الريلز العمودي لـ wisprflow.ai: قصّ سريع، عبارات جذب على الشاشة، وإيقاع طبيعي مناسب لفييد الـ Shorts والـ Reels.',
-    'work.clip5.cat':'فيديو قصير / إعلان', 'work.clip5.title':'الستائر — إعلان قبل/بعد',
-    'work.clip5.desc':'إعلان قصير بأسلوب قبل/بعد لبراند ستائر — تحوّل بصري نضيف ومصمم يوقف المتابع عن السكرول.',
-    'work.clip6.cat':'توك هيد',
-    'work.clip6.desc':'فيديو طويل بأسلوب توك هيد لقناة جيم ماذرز في التطوير الذاتي، مبني على انتقالات تلوين عاطفية في صفحة Color.',
-    'toolkit.heading':'الأدوات',
-    'toolkit.t1.tag':'برنامج المونتاج الأساسي', 'toolkit.t1.desc':'المونتاج، التركيب المرئي في Fusion، وصفحة الألوان — أساس كل مشروع.',
-    'toolkit.t2.tag':'التركيب المرئي', 'toolkit.t2.desc':'إضافات، طبقات، وجرافيك متحرك مبني عقدة تلو الأخرى.',
-    'toolkit.t3.tag':'الألوان', 'toolkit.t3.title':'صفحة الألوان', 'toolkit.t3.desc':'تلوين يعبّر عن المزاج، استمرارية بين المشاهد، وانتقالات عاطفية.',
-    'toolkit.t4.tag':'أجيد أيضًا', 'toolkit.t4.desc':'منظومة شغل كاملة بأدوات Adobe لو خط سير العميل محتاجها.',
-    'toolkit.t5.tag':'الفيديوهات القصيرة', 'toolkit.t5.desc':'مونتاج سريع التسليم لتيك توك، الريلز، والشورتس.',
-    'process.heading':'خطوات العمل',
-    'process.s1.title':'البريف واللقطات',
-    'process.s1.desc':'تبعتلي البريف واللقطات الخام وأي عناصر بصرية للبراند — وأسألك عن أي حاجة ناقصة قبل ما أفتح المشروع أصلاً.',
-    'process.s2.title':'المونتاج الأولي',
-    'process.s2.desc':'الأولوية لبناء السرد والإيقاع — نسخة أولية في DaVinci Resolve للتأكد إن الشكل العام مظبوط قبل أي تلميع.',
-    'process.s3.title':'الصقل والتلوين',
-    'process.s3.desc':'جرافيك متحرك، تصميم صوتي، وتلوين يعبّر عن مزاج الفيديو في صفحة الألوان، لحد ما يوصل للجودة النهائية.',
-    'process.s4.title':'التسليم',
-    'process.s4.desc':'تصدير بالصيغة اللي محتاجها، مع جولة تعديل واحدة ضمن الاتفاق، وبعدها التسليم النهائي.',
-    'about.heading':'نبذة عني',
-    'about.p1':'<strong>أنا مازن</strong> — مونتير فيديو فريلانس، بشتغل على محتوى يوتيوب الطويل، الريلز والتيك توك، الأفلام الوثائقية، وإعلانات الشركات.',
-    'about.p2':'إلى جانب شغل العملاء، أنا طالب جامعي في السنة الأولى، وده اللي بيخلّيني أدي كل مونتاج وقته وتركيزه من غير وقت ضايع: تسليم سريع، وأسلوب شغل مبني بالكامل على DaVinci Resolve من القص للتلوين.',
-    'about.p3':'حاليًا بستقبل مشاريع فريلانس جديدة — تواصل معايا لو عندك قصة محتاجة مونتاج.',
-    'about.meta.based':'مقيم في', 'about.meta.based.val':'الجيزة، مصر',
-    'about.meta.role':'التخصص', 'about.meta.role.val':'مونتير فيديو فريلانس',
-    'about.meta.status':'الحالة', 'about.meta.status.val':'متاح لاستقبال مشاريع',
-    'about.meta.youtube':'يوتيوب', 'about.meta.email':'البريد الإلكتروني', 'about.meta.whatsapp':'واتساب',
-    'about.stat1':'مشاريع مميزة', 'about.stat2':'أدوات مونتاج', 'about.stat3':'أنواع محتوى',
-    'testi.heading':'آراء العملاء',
-    'testi.t1.quote':'"مازن حوّل اللقطات الخام لبرومو حسّه فعلاً بيمثل البراند بتاعنا. تسليم سريع، إيقاع نضيف، ولاحظ تفاصيل في السكريبت إحنا نفسنا فاتتنا."',
-    'testi.t2.quote':'"بعتله مقابلة فيها فوضى، ورجعلي فيلم وثائقي متماسك وحسّه مدروس. التواصل كان سهل رغم فرق التوقيت، وكل تعديل كان بيرجع لي في نفس اليوم."',
-    'testi.t3.quote':'"شغل محترف واحترافية عالية في التواصل. الفيديو خرج أحسن بكتير من اللي كنت متخيله، وسرعة التسليم كانت ممتازة."',
-    'testi.t3.name':'— كريم، صاحب مشروع إعلاني',
-    'contact.heading':'يلا نبدأ<br>مشروع <span>مميز.</span>',
-    'contact.sub':'عندك مشروع في بالك؟ ابعتلي التفاصيل وهرد عليك بالمدة والسعر التقريبي.',
-    'contact.email':'راسلني بالإيميل', 'contact.oldportfolio':'البورتفوليو القديم',
-    'case.tag':'دراسة حالة',
-    'case.challenge.label':'التحدي',
-    'case.challenge.desc':'مقابلات شارع خام وغير مكتوبة، مصوّرة في دبلن بمستويات صوت غير ثابتة، لقطات يدوية مهتزة، ومن غير قائمة لقطات محددة — احتاجت سرد متماسك اتبنى بالكامل جوّه المونتاج.',
-    'case.decisions.label':'القرارات الإبداعية',
-    'case.decisions.desc':'أعدت ترتيب المقابلات حول قوس عاطفي أقوى، أضفت جرافيك مخصص يوضح الموقع للمشاهد، دمجت اللقطات الجوية والأرضية في انتقالات متصلة، ونظّفت مستويات الحوار للحفاظ على الاتساق طوال الفيديو.',
-    'case.result.label':'النتيجة',
-    'case.result.desc':'فيلم وثائقي قصير حسّه مدروس مش مجرد لقطات مجمّعة — العميل أشاد بالإيقاع اللي خلّى المشاهدين مكملين لحد آخر مقابلة.',
-    'footer.copy':'© 2026 مازن — مونتير فيديو', 'footer.tag':'تم تسجيل الريل · تايم كود 00:04:12:00',
-    'status.available':'متاح للعمل',
-    'cmdk.jumpto':'انتقل إلى…', 'cmdk.placeholder':'انتقل إلى قسم أو مشروع…',
-    'cmdk.cat.section':'قسم', 'cmdk.cat.project':'مشروع',
-    'preloader.label':'جارٍ التحميل…'
-  };
-
-  function applyLang(lang){
-    i18n.current = lang;
-    const t = i18n.dict[lang];
-    document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.body.classList.toggle('lang-ar', lang === 'ar');
-
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const key = el.getAttribute('data-i18n');
-      if(t[key] !== undefined) el.textContent = t[key];
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(el=>{
-      const key = el.getAttribute('data-i18n-html');
-      if(t[key] !== undefined) el.innerHTML = t[key];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
-      const key = el.getAttribute('data-i18n-placeholder');
-      if(t[key] !== undefined) el.placeholder = t[key];
-    });
-
-    const label = document.getElementById('langToggleLabel');
-    if(label) label.textContent = lang === 'ar' ? 'English' : 'العربية';
-
-    try{ localStorage.setItem('mazen_lang', lang); }catch(e){}
-
-    if(typeof buildCmdkItems === 'function'){
-      buildCmdkItems();
-      const input = document.getElementById('cmdkInput');
-      if(typeof renderResults === 'function' && input) renderResults(input.value || '');
-    }
-  }
-
-  // preloader
-  window.addEventListener('load', ()=>{
-    const pre = document.getElementById('preloader');
-    setTimeout(()=>{ if(pre) pre.classList.add('hide'); }, 500);
-  });
-  // safety net in case load event is delayed
-  setTimeout(()=>{
-    const pre = document.getElementById('preloader');
-    if(pre) pre.classList.add('hide');
-  }, 3000);
-
-  // scroll to top button
-  const toTopBtn = document.getElementById('toTop');
-  function updateToTop(){
-    if(!toTopBtn) return;
-    if(window.scrollY > 500) toTopBtn.classList.add('show');
-    else toTopBtn.classList.remove('show');
-  }
-  document.addEventListener('scroll', updateToTop, {passive:true});
-  toTopBtn && toTopBtn.addEventListener('click', ()=>{
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-
-  // work filter
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const clips = document.querySelectorAll('#workBin .clip');
-  filterBtns.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      filterBtns.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      clips.forEach(clip=>{
-        const show = (f === 'all' || clip.dataset.cat === f);
-        clip.classList.toggle('hidden-item', !show);
-      });
-    });
-  });
-
-  // case study modal
-  const caseOverlay = document.getElementById('caseOverlay');
-  const caseClose = document.getElementById('caseClose');
-  document.querySelectorAll('.case-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      if(caseOverlay) caseOverlay.classList.add('open');
-    });
-  });
-  caseClose && caseClose.addEventListener('click', ()=>caseOverlay.classList.remove('open'));
-  caseOverlay && caseOverlay.addEventListener('click', (e)=>{
-    if(e.target === caseOverlay) caseOverlay.classList.remove('open');
-  });
-  document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape' && caseOverlay) caseOverlay.classList.remove('open');
-  });
-
   function playYT(el, videoId){
     el.onclick = null;
     el.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId +
       '?autoplay=1&rel=0" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
   }
 
-  // keyboard support for clickable video thumbnails (Enter / Space)
-  document.querySelectorAll('.media[role="button"]').forEach(el=>{
-    el.addEventListener('keydown', (e)=>{
-      if(e.key === 'Enter' || e.key === ' '){
-        e.preventDefault();
-        el.click();
-      }
-    });
-  });
-
   // custom cursor
   const cursorDot = document.getElementById('cursorDot');
   const cursorRing = document.getElementById('cursorRing');
   const hasFinePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   if(hasFinePointer && cursorDot && cursorRing){
-    document.body.classList.add('has-custom-cursor');
     let ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
     document.addEventListener('mousemove', (e)=>{
       mouseX = e.clientX; mouseY = e.clientY;
@@ -1421,12 +823,9 @@
     const parts = new Intl.DateTimeFormat('en-GB', {
       timeZone:'Africa/Cairo', hour:'2-digit', minute:'2-digit', hour12:false
     }).formatToParts(now);
-    let h = parseInt(parts.find(p=>p.type==='hour').value, 10);
+    const h = parts.find(p=>p.type==='hour').value;
     const m = parts.find(p=>p.type==='minute').value;
-    h = h % 12;
-    if(h === 0) h = 12;
-    const hh = String(h).padStart(2,'0');
-    clockEl.textContent = hh + ':' + m + ' Cairo';
+    clockEl.textContent = h + ':' + m + ' Cairo';
   }
   updateClock();
   setInterval(updateClock, 15000);
@@ -1452,22 +851,16 @@
   const cmdkKeyLabel = document.getElementById('cmdkKeyLabel');
   if(navigator.platform.toUpperCase().indexOf('MAC') >= 0) cmdkKeyLabel.textContent = '⌘ K';
 
-  let cmdkItems = [];
-  function buildCmdkItems(){
-    const t = i18n.dict[i18n.current];
-    cmdkItems = [
-      {label:t['nav.work'], cat:t['cmdk.cat.section'], target:'#work'},
-      {label:t['nav.toolkit'], cat:t['cmdk.cat.section'], target:'#toolkit'},
-      {label:t['nav.process'], cat:t['cmdk.cat.section'], target:'#process'},
-      {label:t['nav.about'], cat:t['cmdk.cat.section'], target:'#about'},
-      {label:t['testi.heading'], cat:t['cmdk.cat.section'], target:'#testimonials'},
-      {label:t['nav.contact'], cat:t['cmdk.cat.section'], target:'#contact'},
-    ];
-    document.querySelectorAll('#work h3').forEach(h3=>{
-      cmdkItems.push({label:h3.textContent, cat:t['cmdk.cat.project'], target:'#work'});
-    });
-  }
-  buildCmdkItems();
+  const cmdkItems = [
+    {label:'Work', cat:'Section', target:'#work'},
+    {label:'Toolkit', cat:'Section', target:'#toolkit'},
+    {label:'About', cat:'Section', target:'#about'},
+    {label:'Client Feedback', cat:'Section', target:'#testimonials'},
+    {label:'Contact', cat:'Section', target:'#contact'},
+  ];
+  document.querySelectorAll('#work h3').forEach(h3=>{
+    cmdkItems.push({label:h3.textContent, cat:'Project', target:'#work'});
+  });
 
   let activeIndex = 0;
   function renderResults(query){
@@ -1531,21 +924,6 @@
       if(active) active.click();
     }
   });
-
-  // ---------- init language ----------
-  let savedLang = 'en';
-  try{
-    savedLang = localStorage.getItem('mazen_lang') ||
-      ((navigator.language || '').toLowerCase().startsWith('ar') ? 'ar' : 'en');
-  }catch(e){}
-  applyLang(savedLang);
-
-  const langToggleBtn = document.getElementById('langToggle');
-  if(langToggleBtn){
-    langToggleBtn.addEventListener('click', ()=>{
-      applyLang(i18n.current === 'en' ? 'ar' : 'en');
-    });
-  }
 </script>
 
 </body>
